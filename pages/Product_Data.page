@@ -1,0 +1,36 @@
+<apex:page controller="ApexDataController">
+<apex:slds />
+<div style="height: 180px;">
+	<div class="slds-page-header" align="center" >
+		{!message.Name}
+	</div>
+</div>
+    
+<div>
+	<div style="float:left; width:50%;">
+    	<img src="{!message.Image_Url__c}" style="width:220px; height:360px; margin: auto auto auto 220px;"/>
+	</div>
+	<div style="float:right; width:50%;">    
+		<div class="slds-form-element">
+ 	 		<span class="slds-form-element__label">Amounth</span>
+  			<div class="slds-form-element__control">
+    			<span class="slds-form-element__static">{! message.Units_Available__c }</span>
+  			</div>
+		</div>    
+    	<div class="slds-form-element">
+ 	 		<span class="slds-form-element__label">Description</span>
+  			<div class="slds-form-element__control">
+    			<span class="slds-form-element__static">{! message.Product_Description__c }</span>
+  			</div>
+		</div>
+	</div>
+</div>
+
+<div style="height: 180px;">
+	<div class="slds-docked-form-footer">
+		<button type="button" class="slds-button slds-button_neutral" onclick="window.open('/apex/Product_List')">To shopping</button>
+		<button type="button" class="slds-button slds-button_brand" onclick="window.open('/apex/Product_Buy?parm_02={!message.Id}')">Buy</button>
+	</div>
+</div>
+
+</apex:page>

@@ -1,0 +1,20 @@
+<apex:page controller="ApexTableController">
+    <apex:slds />    
+	<apex:pageBlock title="Product List">
+        <apex:form >
+  		<apex:pageBlockTable value="{! productTable }" var="Product">
+            <apex:column headerValue="Image"><apex:image url="{!Product.Image_Url__c}"/></apex:column>
+            <apex:column headerValue="Name" ><apex:outputLink value="/apex/Product_Data?parm_01={!Product.Id}" target="blank">{!Product.Name}</apex:outputLink></apex:column>
+            
+            <apex:column headerValue="Description">
+                <div id="sp_01">{!IF(LEN(Product.Product_Description__c) > 100,LEFT(Product.Product_Description__c, 97) + '...', Product.Product_Description__c)}</div>
+                <a value="More" href="/apex/Product_Data?parm_01={!Product.Id}" target="blank"/>
+            </apex:column>                                             
+            
+            <apex:column headerValue="Coast" value="{!Product.Unit_Price__c}"/>
+            <apex:column ><button class="slds-button slds-button_brand" onclick="window.open('/apex/Product_Buy?parm_02={!Product.Id}')">Buy</button> </apex:column>
+            
+   		</apex:pageBlockTable>
+        </apex:form>
+	</apex:pageBlock>
+</apex:page>

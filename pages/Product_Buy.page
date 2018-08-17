@@ -1,0 +1,90 @@
+<apex:page Controller="ApexBuyController">
+<apex:slds />
+<apex:pageMessages id="showmsg"></apex:pageMessages>
+<apex:form >
+<div style="float:left; width:50%;">
+	<div style="height: 180px;">
+		<div class="slds-page-header" align="center" style="border-radius:0;border-right:0px;">
+			Contact Information
+		</div>
+	</div> 
+    
+    <div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">Email</label>
+		<div class="slds-form-element__control">
+			<apex:inputText id="text-input-id-1" styleClass="slds-input" value="{!Email}"/>
+		</div>
+	</div>
+    
+    <div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-2">First Name</label>
+		<div class="slds-form-element__control">
+			<apex:inputText id="text-input-id-2" styleClass="slds-input" value="{! FirstName }"/>
+		</div>
+	</div>
+    
+    <div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-3">Last Name</label>
+		<div class="slds-form-element__control">
+			<apex:inputText id="text-input-id-3" styleClass="slds-input" value="{! LastName }"/>
+		</div>
+	</div>
+    
+</div>
+    
+<div style="float: right; width:50%;">
+	<div style="height: 180px;">
+		<div class="slds-page-header" align="center" style="border-radius:0;border-left:0px;">
+			Product Information
+		</div>
+	</div>    
+    
+    <div class="slds-form-element">
+ 	 	<span class="slds-form-element__label">Product Name</span>
+  		<div class="slds-form-element__control">
+    		<span class="slds-form-element__static">{! message.Name }</span>
+  		</div>
+	</div>
+    
+    <div class="slds-form-element">
+ 	 	<span class="slds-form-element__label">Cost</span>
+  		<div class="slds-form-element__control">
+    		<span class="slds-form-element__static">{! message.Unit_Price__c } $</span>
+  		</div>
+	</div>
+    
+    <div class="slds-form-element"> 
+		<label class="slds-form-element__label" for="text-input-id-4">Unit Count</label>
+		<div class="slds-form-element__control">
+			<apex:inputText id="text-input-id-4" styleClass="slds-input" value="{! ApexVar_02 }" onchange="document.getElementById('id_02').innerHTML=this.value*{! message.Unit_Price__c }+' $'"/>
+		</div> 
+	</div>
+    
+	<div class="slds-form-element">
+ 	 	<span class="slds-form-element__label">Total Amount</span>
+  		<div class="slds-form-element__control">
+    		<span class="slds-form-element__static" id="id_02">0 $</span>
+  		</div>
+	</div>
+</div> 
+    
+<div style="height: 180px;">
+	<div class="slds-docked-form-footer">
+		<button type="button" class="slds-button slds-button_neutral" onclick="location.href = '/apex/Product_List'">To shopping</button>
+        <apex:commandButton action="{!saving}" rerender="showmsg" value="Buy" styleClass="slds-button slds-button_brand"/>
+	</div>
+</div>  
+    </apex:form>        
+<style>
+* {  
+	margin: 0;
+	padding:0;
+}  
+.slds-form-element {
+	margin:0px 70px 30px 70px;
+}    
+</style>
+    
+    
+    
+</apex:page>
